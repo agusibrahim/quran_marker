@@ -123,6 +123,10 @@ The pipeline generates two output files per page in the output directory:
 1. **JSON Highlight File (`QK_{page}_highlights.json`)**: Contains normalized polygon coordinates for every verse block, structured for web rendering.
 2. **Highlighted Image (`QK_{page}_highlighted.jpg`)**: Visual representation of the page with colored overlay masks marking individual verses.
 
+> [!TIP]
+> **Akses Cepat Hasil Koordinat JSON & Gambar Bersih (Branch `pages-data`)**  
+> Untuk kebutuhan konsumsi API atau aplikasi web eksternal, seluruh hasil koordinat JSON (`XXX.json`) dan gambar halaman bersih asli (`XXX.webp`) yang sejajar dan sudah dirapikan penamaannya (dari `001` s.d `604`) dapat langsung diakses di branch [pages-data](https://github.com/agusibrahim/quran_marker/tree/pages-data). Silakan ganti ke branch `pages-data` untuk mengunduh berkas mentah tersebut secara praktis.
+
 ---
 
 ## 5. Getting Started
