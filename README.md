@@ -162,7 +162,10 @@ python batch_marker.py --start-page 1 --end-page 604 --process-threads 8 --stop-
 ```
 
 #### Launch the Interactive Web Viewer
-The project includes a rich interactive HTML5 viewer (`viewer.html`) to visualize page highlights and browse verses with mouse-hover highlights. Because modern browsers restrict local file fetches (CORS policy), it must be served via a local web server:
+The project includes a rich interactive HTML5 viewer (`viewer.html` / `index.html`) to visualize page highlights and browse verses with mouse-hover highlights.
+
+* **Live Online Demo**: Access the live interactive viewer directly on GitHub Pages: [https://agusibrahim.github.io/quran_marker/](https://agusibrahim.github.io/quran_marker/) (automatically loads assets via jsDelivr CDN).
+* **Local Execution**: Because modern browsers restrict local file fetches (CORS policy), it must be served via a local web server to read local files:
 
 1. Start a lightweight server in the project root folder:
    ```bash
