@@ -173,3 +173,13 @@ The project includes a rich interactive HTML5 viewer (`viewer.html`) to visualiz
    http://localhost:8000/viewer.html
    ```
 3. Use the page controls in the header to navigate between pages 1 and 604. The viewer will automatically fetch `pages/QK_{page}.webp` and its corresponding `pages/QK_{page}_highlights.json` file. Hovering the mouse over any verse highlights it dynamically and brings up details in the sidebar.
+
+#### Automated Generation via GitHub Actions
+Proyek ini dilengkapi dengan **GitHub Actions Workflow** untuk secara otomatis mengunduh halaman dari server Kemenag, menjalankan deteksi penanda ayat, dan mengompresi hasilnya menjadi berkas `.zip`.
+
+1. Masuk ke halaman repositori di GitHub.
+2. Klik tab **Actions** di bagian atas.
+3. Pilih alur kerja **Generate Quran Verse Highlights Data** dari panel sebelah kiri.
+4. Klik menu dropdown **Run workflow** di sebelah kanan.
+5. Atur rentang halaman yang ingin diproses (default `1` s.d `604`) dan parameter performa, lalu klik **Run workflow**.
+6. Setelah alur kerja selesai berjalan, berkas `quran-verse-highlights-data` (format `.zip` berisi gambar `.webp`, koordinat `.json` yang sudah dinormalisasi, serta berkas `page_metadata.json` dan `page_metadata_overrides.json` secara sejajar) dapat diunduh langsung dari bagian **Artifacts** di bawah halaman detail proses.
