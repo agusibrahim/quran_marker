@@ -124,8 +124,8 @@ The pipeline generates two output files per page in the output directory:
 2. **Highlighted Image (`QK_{page}_highlighted.jpg`)**: Visual representation of the page with colored overlay masks marking individual verses.
 
 > [!TIP]
-> **Akses Cepat Hasil Koordinat JSON & Gambar Bersih (Branch `pages-data`)**  
-> Untuk kebutuhan konsumsi API atau aplikasi web eksternal, seluruh hasil koordinat JSON (`XXX.json`) dan gambar halaman bersih asli (`XXX.webp`) yang sejajar dan sudah dirapikan penamaannya (dari `001` s.d `604`) dapat langsung diakses di branch [pages-data](https://github.com/agusibrahim/quran_marker/tree/pages-data). Silakan ganti ke branch `pages-data` untuk mengunduh berkas mentah tersebut secara praktis.
+> **Quick Access to Clean Images & JSON Coordinates (Branch `pages-data`)**  
+> For API consumption or external web application integration, all coordinate JSONs (`XXX.json`) and clean page WebP images (`XXX.webp`) with normalized padding names (`001` to `604`) are directly accessible on the [pages-data](https://github.com/agusibrahim/quran_marker/tree/pages-data) branch. Simply switch to the `pages-data` branch to download these files.
 
 ---
 
@@ -175,11 +175,11 @@ The project includes a rich interactive HTML5 viewer (`viewer.html`) to visualiz
 3. Use the page controls in the header to navigate between pages 1 and 604. The viewer will automatically fetch `pages/QK_{page}.webp` and its corresponding `pages/QK_{page}_highlights.json` file. Hovering the mouse over any verse highlights it dynamically and brings up details in the sidebar.
 
 #### Automated Generation via GitHub Actions
-Proyek ini dilengkapi dengan **GitHub Actions Workflow** untuk secara otomatis mengunduh halaman dari server Kemenag, menjalankan deteksi penanda ayat, dan mengompresi hasilnya menjadi berkas `.zip`.
+This project features a **GitHub Actions Workflow** to automatically download Mushaf pages from Kemenag servers, run the verse marker detection pipeline, and package the results into a `.zip` archive.
 
-1. Masuk ke halaman repositori di GitHub.
-2. Klik tab **Actions** di bagian atas.
-3. Pilih alur kerja **Generate Quran Verse Highlights Data** dari panel sebelah kiri.
-4. Klik menu dropdown **Run workflow** di sebelah kanan.
-5. Atur rentang halaman yang ingin diproses (default `1` s.d `604`) dan parameter performa, lalu klik **Run workflow**.
-6. Setelah alur kerja selesai berjalan, berkas `quran-verse-highlights-data` (format `.zip` berisi gambar `.webp`, koordinat `.json` yang sudah dinormalisasi, serta berkas `page_metadata.json` dan `page_metadata_overrides.json` secara sejajar) dapat diunduh langsung dari bagian **Artifacts** di bawah halaman detail proses.
+1. Navigate to the repository page on GitHub.
+2. Click on the **Actions** tab at the top.
+3. Select the **Generate Quran Verse Highlights Data** workflow from the left sidebar.
+4. Click the **Run workflow** dropdown on the right.
+5. Set the page range you want to process (default: `1` to `604`) and performance parameters, then click **Run workflow**.
+6. Once the run completes, download the `quran-verse-highlights-data` artifact (a `.zip` containing the `.webp` images, normalized `.json` coordinates, `page_metadata.json`, and `page_metadata_overrides.json` files flatly aligned) from the **Artifacts** section at the bottom of the run summary page.
