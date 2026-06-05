@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mushaf Al-Qur'an Interaktif - Tampilan pasang halaman (kanan-kiri) fisik untuk pengalaman membaca Al-Qur'an Kemenag RI secara digital">
+    <title>Mushaf Al-Qur'an Interaktif</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fbfaf7;      /* Warm, soft paper background */
+            --bg-secondary: #ffffff;    /* Pure white for panels */
+            --bg-tertiary: #f4f1ea;     /* Muted warm cream for inputs/decorations */
+            --text-primary: #2d2925;    /* Elegant charcoal/dark brown */
+            --text-secondary: #605750;  /* Subdued slate brown */
+            --text-muted: #9a8f85;      /* Faded brown-grey for helper text */
+            --accent-gold: #8f6f35;     /* Premium gold/bronze */
+            --accent-gold-dim: rgba(143, 111, 53, 0.08);
+            --border: rgba(143, 111, 53, 0.12);
+            --shadow-sm: 0 2px 8px rgba(143, 109, 59, 0.04);
+            --shadow-md: 0 8px 20px rgba(143, 109, 59, 0.06);
+            --shadow-lg: 0 16px 40px rgba(143, 109, 59, 0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 12% 15%, rgba(143, 111, 53, 0.02) 0%, transparent 40%),
+                radial-gradient(circle at 88% 85%, rgba(143, 111, 53, 0.02) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Header controls */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-brand h1 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-brand .subtitle {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--bg-tertiary);
+            padding: 2px 8px;
+            border-radius: 20px;
+            border: 1px solid rgba(143, 111, 53, 0.06);
+        }
+
+        /* central reader navigation */
+        .reader-nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-tertiary);
+            padding: 3px;
+            border-radius: 30px;
+            border: 1px solid rgba(143, 111, 53, 0.08);
+        }
+
+        .nav-btn {
+            border: none;
+            background: transparent;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 0.72rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--bg-secondary);
+            color: var(--accent-gold);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .page-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 10px 0 6px;
+        }
+
+        .page-input-wrapper label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .page-input {
+            width: 78px;
+            height: 26px;
+            border: 1px solid rgba(143, 111, 53, 0.15);
+            border-radius: 6px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            text-align: center;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.82rem;
+            outline: none;
+        }
+
+        /* Action control buttons */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(143, 111, 53, 0.15);
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .action-btn.active {
+            background: var(--accent-gold-dim);
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* Settings Drawer */
+        .settings-drawer {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 24px;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.01);
+            animation: slideDown 0.25s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .settings-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .settings-content h3 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .settings-grid {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .file-input-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .file-input-group label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .file-btn {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 10px;
+            background: var(--bg-tertiary);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .file-btn:hover {
+            background: var(--accent-gold-dim);
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .file-btn input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Main Container */
+        .main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+            width: 100%;
+            z-index: 1;
+        }
+
+        /* Spread Container: side-by-side pages on desktop */
+        .spread-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            gap: 0; /* flat gap to mimic physical center crease */
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 0;
+            padding: 10px;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Align wrappers to touch in the middle */
+        .left-page {
+            align-items: flex-end;
+            padding-right: 0px;
+        }
+
+        .right-page {
+            align-items: flex-start;
+            padding-left: 0px;
+        }
+
+        /* Page wrapper: overflow: visible is CRITICAL so tooltips don't clip */
+        .page-wrapper {
+            position: relative;
+            display: inline-block;
+            background: #ffffff;
+            line-height: 0;
+            padding: 0;
+            overflow: visible;
+            width: 100%;
+            max-width: 530px;
+        }
+
+        /* Physical Book Crease Effects */
+        .left-page .page-wrapper {
+            box-shadow: 
+                -12px 0 24px -10px rgba(100, 80, 50, 0.12) inset,
+                -1px 4px 16px rgba(143, 109, 59, 0.06);
+            border-radius: var(--radius-md) 4px 4px var(--radius-md);
+            border: 1px solid rgba(143, 111, 53, 0.15);
+            border-right: none; /* merge into crease */
+        }
+
+        .right-page .page-wrapper {
+            box-shadow: 
+                12px 0 24px -10px rgba(100, 80, 50, 0.12) inset,
+                1px 4px 16px rgba(143, 109, 59, 0.06);
+            border-radius: 4px var(--radius-md) var(--radius-md) 4px;
+            border: 1px solid rgba(143, 111, 53, 0.15);
+            border-left: none; /* merge into crease */
+        }
+
+        .page-wrapper img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 78vh;
+        }
+
+        .left-page img {
+            border-radius: var(--radius-md) 4px 4px var(--radius-md);
+        }
+
+        .right-page img {
+            border-radius: 4px var(--radius-md) var(--radius-md) 4px;
+        }
+
+        .highlight-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: visible;
+        }
+
+        /* Highlight Rects: Invisible by default */
+        .highlight-rect {
+            position: absolute;
+            pointer-events: all;
+            cursor: pointer;
+            border-radius: 4px;
+            background-color: transparent !important;
+            border: 1.5px solid transparent !important;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        /* Hovered / Active states: soft gold translucent overlay */
+        .highlight-rect:hover,
+        .highlight-rect.active {
+            z-index: 10;
+            background-color: rgba(143, 111, 53, 0.09) !important;
+            border: 1.5px solid rgba(143, 111, 53, 0.22) !important;
+        }
+
+        /* Tooltip Card */
+        .highlight-rect .tooltip {
+            position: absolute;
+            bottom: 108%;
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            background: var(--bg-secondary);
+            border: 1px solid rgba(143, 111, 53, 0.22);
+            color: var(--text-primary);
+            font-size: 0.82rem;
+            font-family: 'Inter', -apple-system, sans-serif;
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            width: 300px;
+            max-width: calc(100vw - 40px);
+            white-space: normal;
+            line-height: 1.5;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+            box-shadow: 0 10px 30px rgba(143, 109, 59, 0.16);
+            z-index: 1000;
+            text-align: left;
+        }
+
+        .highlight-rect .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: var(--bg-secondary) transparent transparent transparent;
+        }
+
+        .highlight-rect .tooltip::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 7px;
+            border-style: solid;
+            border-color: rgba(143, 111, 53, 0.22) transparent transparent transparent;
+            z-index: -1;
+        }
+
+        .highlight-rect:hover .tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Page Information Bar (centered footer) */
+        .page-info {
+            padding: 8px 20px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .page-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .page-info .label {
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* Empty State */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
+            text-align: center;
+            gap: 16px;
+            background: var(--bg-secondary);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            width: 100%;
+            max-width: 500px;
+            margin-top: 40px;
+        }
+
+        .empty-state .icon {
+            font-size: 2.5rem;
+            opacity: 0.8;
+        }
+
+        .empty-state h2 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .empty-state p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            max-width: 320px;
+            line-height: 1.5;
+        }
+
+        /* Responsive spread: switch to single page on tablet/mobile */
+        @media (max-width: 1024px) {
+            .spread-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .page-container {
+                width: 100%;
+                max-width: 550px;
+                align-items: center !important;
+                padding: 10px !important;
+            }
+
+            /* Merge border radius for single view */
+            .left-page .page-wrapper, .right-page .page-wrapper {
+                border-radius: var(--radius-md);
+                border: 1px solid rgba(143, 111, 53, 0.15);
+            }
+            .left-page img, .right-page img {
+                border-radius: var(--radius-md);
+            }
+
+            /* Hide the inactive page on mobile view */
+            .page-container.inactive-mobile {
+                display: none !important;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.35s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-brand">
+                <h1><span class="logo-icon">📖</span> Mushaf Al-Qur'an</h1>
+                <span class="subtitle">Kemenag RI</span>
+            </div>
+
+            <!-- reader navigation -->
+            <div class="reader-nav">
+                <button class="nav-btn" id="prevPage" title="Halaman Sebelumnya">◀</button>
+                <div class="page-input-wrapper">
+                    <label for="pageNumberInput">Halaman</label>
+                    <input type="text" id="pageNumberInput" class="page-input" value="1">
+                </div>
+                <button class="nav-btn" id="nextPage" title="Halaman Selanjutnya">▶</button>
+            </div>
+
+            <!-- actions -->
+            <div class="header-actions">
+                <button class="action-btn" id="toggleSettings" title="Pengaturan Lanjutan">
+                    ⚙️ Pengaturan
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Collapsible Settings Panel -->
+    <div class="settings-drawer" id="settingsDrawer" style="display: none;">
+        <div class="settings-content">
+            <h3>Pilihan Pengunggahan Manual (Developer Mode)</h3>
+            <div class="settings-grid">
+                <div class="file-input-group">
+                    <label>Gambar Halaman:</label>
+                    <div class="file-btn" id="imageBtnLabel">
+                        Pilih Gambar...
+                        <input type="file" id="imageInput" accept="image/*">
+                    </div>
+                </div>
+                <div class="file-input-group">
+                    <label>JSON Highlight:</label>
+                    <div class="file-btn" id="jsonBtnLabel">
+                        Pilih File JSON...
+                        <input type="file" id="jsonInput" accept=".json">
+                    </div>
+                </div>
+                <div class="control-group" style="display: flex; align-items: center; gap: 8px;">
+                    <label>Highlight Interaktif:</label>
+                    <button class="action-btn active" id="toggleHighlights" style="padding: 6px 12px; font-size: 0.78rem;">
+                        Aktif
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+        <!-- Empty state (hidden once page loads) -->
+        <div class="empty-state" id="emptyState">
+            <div class="icon">🕌</div>
+            <h2>Mulai Membaca Al-Qur'an</h2>
+            <p>Jalankan server lokal HTTP Anda untuk memuat halaman secara otomatis, atau unggah file gambar dan JSON secara manual melalui menu Pengaturan.</p>
+        </div>
+
+        <!-- Spread Container (Left page and Right page) -->
+        <div class="spread-container fade-in" id="spreadContainer" style="display: none;">
+            
+            <!-- Left Page Container (Even numbers) -->
+            <div class="page-container left-page" id="leftPageContainer">
+                <div class="page-wrapper">
+                    <img id="leftPageImage" alt="Halaman Mushaf Kiri">
+                    <div class="highlight-overlay" id="leftHighlightOverlay"></div>
+                </div>
+            </div>
+
+            <!-- Right Page Container (Odd numbers) -->
+            <div class="page-container right-page" id="rightPageContainer">
+                <div class="page-wrapper">
+                    <img id="rightPageImage" alt="Halaman Mushaf Kanan">
+                    <div class="highlight-overlay" id="rightHighlightOverlay"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Page info (No image resolution metadata shown) -->
+        <div class="page-info fade-in" id="pageInfo" style="display: none;">
+            <span><span class="label">Halaman Aktif:</span> <span id="infoPage">-</span></span>
+            <span><span class="label">Surah:</span> <span id="infoSurah">-</span></span>
+            <span><span class="label">Total Ayat Halaman:</span> <span id="infoVerses">-</span></span>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let currentPage = 1;
+        let rightPageData = null;
+        let leftPageData = null;
+        let rightImageLoaded = false;
+        let leftImageLoaded = false;
+        let showHighlights = true;
+        let selectedVerse = null;
+
+        // Cache for Quran.com translation responses
+        const translationCache = {};
+
+        // DOM elements
+        const imageInput = document.getElementById('imageInput');
+        const jsonInput = document.getElementById('jsonInput');
+        const emptyState = document.getElementById('emptyState');
+        const spreadContainer = document.getElementById('spreadContainer');
+        const leftPageContainer = document.getElementById('leftPageContainer');
+        const rightPageContainer = document.getElementById('rightPageContainer');
+        const leftPageImage = document.getElementById('leftPageImage');
+        const rightPageImage = document.getElementById('rightPageImage');
+        const leftHighlightOverlay = document.getElementById('leftHighlightOverlay');
+        const rightHighlightOverlay = document.getElementById('rightHighlightOverlay');
+        const pageInfo = document.getElementById('pageInfo');
+        const toggleHighlightsBtn = document.getElementById('toggleHighlights');
+        const toggleSettingsBtn = document.getElementById('toggleSettings');
+        const settingsDrawer = document.getElementById('settingsDrawer');
+        const pageNumberInput = document.getElementById('pageNumberInput');
+        const prevPageBtn = document.getElementById('prevPage');
+        const nextPageBtn = document.getElementById('nextPage');
+        const imageBtnLabel = document.getElementById('imageBtnLabel');
+        const jsonBtnLabel = document.getElementById('jsonBtnLabel');
+
+        // ---- Settings Drawer Toggle ----
+
+        toggleSettingsBtn.addEventListener('click', () => {
+            const isVisible = settingsDrawer.style.display !== 'none';
+            settingsDrawer.style.display = isVisible ? 'none' : 'block';
+            toggleSettingsBtn.classList.toggle('active', !isVisible);
+        });
+
+        // ---- Manual Upload Fallbacks ----
+
+        function setupFileInputListeners() {
+            const currentImgInput = document.getElementById('imageInput');
+            if (currentImgInput) {
+                currentImgInput.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+
+                    const reader = new FileReader();
+                    reader.onload = (ev) => {
+                        // For manual uploads, we put the image into the right page slot as default
+                        rightPageImage.onload = () => {
+                            rightImageLoaded = true;
+                            leftImageLoaded = false; // single page manual upload
+                            leftPageContainer.style.display = 'none';
+                            emptyState.style.display = 'none';
+                            spreadContainer.style.display = 'flex';
+                            renderHighlightsForPage(rightPageData, rightHighlightOverlay);
+                            updatePageInfo();
+                        };
+                        rightPageImage.src = ev.target.result;
+                    };
+                    reader.readAsDataURL(file);
+
+                    imageBtnLabel.innerHTML = `🖼️ ${file.name}<input type="file" id="imageInput" accept="image/*">`;
+                    setupFileInputListeners();
+                });
+            }
+
+            const currentJsonInput = document.getElementById('jsonInput');
+            if (currentJsonInput) {
+                currentJsonInput.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+
+                    const reader = new FileReader();
+                    reader.onload = (ev) => {
+                        try {
+                            const parsed = JSON.parse(ev.target.result);
+                            rightPageData = { pageNo: parsed.page, data: parsed };
+                            renderHighlightsForPage(rightPageData, rightHighlightOverlay);
+                            updatePageInfo();
+                            if (rightImageLoaded) {
+                                pageInfo.style.display = 'flex';
+                            }
+                        } catch (err) {
+                            alert('Gagal membaca JSON: ' + err.message);
+                        }
+                    };
+                    reader.readAsText(file);
+
+                    jsonBtnLabel.innerHTML = `📄 ${file.name}<input type="file" id="jsonInput" accept=".json">`;
+                    setupFileInputListeners();
+                });
+            }
+        }
+
+        // ---- Fetch and Layout Pages ----
+
+        async function fetchPageData(pageNo) {
+            if (pageNo < 1 || pageNo > 604) return null;
+            const padded = String(pageNo).padStart(3, '0');
+            const jsonSrc = `pages/QK_${padded}_highlights.json`;
+            const imageSrc = `pages/QK_${padded}.webp`;
+
+            try {
+                const response = await fetch(jsonSrc);
+                if (!response.ok) throw new Error(`Status ${response.status}`);
+                const data = await response.json();
+                return { pageNo, data, imageSrc };
+            } catch (err) {
+                console.warn(`Halaman data ${pageNo} gagal diambil:`, err.message);
+                return null;
+            }
+        }
+
+        async function loadPage(pageNo) {
+            if (pageNo < 1 || pageNo > 604) return;
+            currentPage = pageNo;
+            syncPageInputDisplay();
+            selectedVerse = null;
+
+            // Determine Book Spread Pages:
+            // Odd page is on the right, even page is on the left.
+            let rightPageNo = null;
+            let leftPageNo = null;
+
+            if (pageNo % 2 !== 0) {
+                // selected odd page: right page is target, left is next page
+                rightPageNo = pageNo;
+                leftPageNo = pageNo + 1 <= 604 ? pageNo + 1 : null;
+            } else {
+                // selected even page: left page is target, right is previous page
+                rightPageNo = pageNo - 1 >= 1 ? pageNo - 1 : null;
+                leftPageNo = pageNo;
+            }
+
+            // Mobile view handling: only keep the currently selected active page visible
+            if (pageNo === rightPageNo) {
+                rightPageContainer.classList.remove('inactive-mobile');
+                leftPageContainer.classList.add('inactive-mobile');
+            } else {
+                leftPageContainer.classList.remove('inactive-mobile');
+                rightPageContainer.classList.add('inactive-mobile');
+            }
+
+            // Reset image flags
+            rightImageLoaded = false;
+            leftImageLoaded = false;
+
+            // Load data in parallel
+            const [rightRes, leftRes] = await Promise.all([
+                fetchPageData(rightPageNo),
+                fetchPageData(leftPageNo)
+            ]);
+
+            rightPageData = rightRes;
+            leftPageData = leftRes;
+
+            // Load Right Page Image
+            if (rightPageData) {
+                rightPageContainer.style.display = 'flex';
+                rightPageImage.onload = () => {
+                    rightImageLoaded = true;
+                    checkFullyLoaded();
+                };
+                rightPageImage.src = rightPageData.imageSrc;
+            } else {
+                rightPageContainer.style.display = 'none';
+                rightImageLoaded = true; // dummy true
+                checkFullyLoaded();
+            }
+
+            // Load Left Page Image
+            if (leftPageData) {
+                leftPageContainer.style.display = 'flex';
+                leftPageImage.onload = () => {
+                    leftImageLoaded = true;
+                    checkFullyLoaded();
+                };
+                leftPageImage.src = leftPageData.imageSrc;
+            } else {
+                leftPageContainer.style.display = 'none';
+                leftImageLoaded = true; // dummy true
+                checkFullyLoaded();
+            }
+
+            function checkFullyLoaded() {
+                if (rightImageLoaded && leftImageLoaded) {
+                    emptyState.style.display = 'none';
+                    spreadContainer.style.display = 'flex';
+                    pageInfo.style.display = 'flex';
+
+                    // Render highlights
+                    renderHighlightsForPage(rightPageData, rightHighlightOverlay);
+                    renderHighlightsForPage(leftPageData, leftHighlightOverlay);
+
+                    updatePageInfo();
+                }
+            }
+        }
+
+        // ---- Render Highlights ----
+
+        function renderHighlightsForPage(pageData, overlayElement) {
+            overlayElement.innerHTML = '';
+            if (!pageData || !pageData.data) return;
+
+            const imgW = pageData.data.image_width;
+            const imgH = pageData.data.image_height;
+
+            pageData.data.verses.forEach((verse, idx) => {
+                const verseKey = `${verse.surah}:${verse.ayat}`;
+
+                verse.highlights.forEach((h) => {
+                    const rect = document.createElement('div');
+                    rect.className = 'highlight-rect';
+                    rect.dataset.verse = verseKey;
+
+                    // Position scaling using percentages
+                    rect.style.left = `${(h.left / imgW) * 100}%`;
+                    rect.style.top = `${(h.top / imgH) * 100}%`;
+                    rect.style.width = `${(h.width / imgW) * 100}%`;
+                    rect.style.height = `${(h.height / imgH) * 100}%`;
+
+                    // Create speech-bubble style Tooltip
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'tooltip';
+                    tooltip.innerHTML = `
+                        <div style="font-weight: 700; color: var(--accent-gold); font-size: 0.8rem; margin-bottom: 4px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 3px;">
+                            <span>QS. ${verse.surah}:${verse.ayat}</span>
+                        </div>
+                        <div style="font-size: 0.78rem; color: var(--text-muted);">Memuat terjemahan...</div>
+                    `;
+                    rect.appendChild(tooltip);
+
+                    // Hover events
+                    rect.addEventListener('mouseenter', () => {
+                        highlightVerseRects(verseKey, true);
+                        fetchTranslation(verseKey);
+                        adjustTooltipPosition(rect, tooltip);
+                    });
+                    rect.addEventListener('mouseleave', () => {
+                        if (selectedVerse !== verseKey) {
+                            highlightVerseRects(verseKey, false);
+                        }
+                    });
+                    rect.addEventListener('click', () => {
+                        toggleVerseSelection(verseKey);
+                    });
+
+                    overlayElement.appendChild(rect);
+                });
+            });
+        }
+
+        // Adjust tooltip to prevent left/right viewport boundaries clipping
+        function adjustTooltipPosition(rect, tooltip) {
+            requestAnimationFrame(() => {
+                const tooltipBounds = tooltip.getBoundingClientRect();
+                let shiftX = 0;
+                
+                // Left screen margin overlap
+                if (tooltipBounds.left < 10) {
+                    shiftX = 10 - tooltipBounds.left;
+                }
+                // Right screen margin overlap
+                const screenW = window.innerWidth;
+                if (tooltipBounds.right > screenW - 10) {
+                    shiftX = (screenW - 10) - tooltipBounds.right;
+                }
+                
+                tooltip.style.transform = `translateX(calc(-50% + ${shiftX}px)) translateY(0)`;
+            });
+        }
+
+        // ---- API Translation Integrator ----
+
+        async function fetchTranslation(verseKey) {
+            if (translationCache[verseKey]) {
+                updateTooltipsForVerse(verseKey, translationCache[verseKey]);
+                return;
+            }
+
+            const [surah, ayat] = verseKey.split(':');
+            updateTooltipsForVerse(verseKey, `<span style="color: var(--text-muted); font-size: 0.75rem; font-style: italic;">Memuat terjemahan dari quran.com...</span>`);
+
+            try {
+                // Translation resource ID 33 is Kemenag RI Indonesian Translation
+                const response = await fetch(`https://api.quran.com/api/v4/verses/by_key/${surah}:${ayat}?translations=33`);
+                if (!response.ok) throw new Error("Gagal mengambil data terjemahan");
+                
+                const data = await response.json();
+                if (data && data.verse && data.verse.translations && data.verse.translations[0]) {
+                    const rawText = data.verse.translations[0].text;
+                    const cleanText = rawText.replace(/<[^>]*>/g, ''); // strip footnote superscript
+                    translationCache[verseKey] = cleanText;
+                    updateTooltipsForVerse(verseKey, cleanText);
+                } else {
+                    throw new Error("Struktur respons tidak dikenal");
+                }
+            } catch (err) {
+                console.error("Error loading translation:", err);
+                updateTooltipsForVerse(verseKey, `<span style="color: #c0392b; font-size: 0.75rem;">Terjemahan gagal dimuat dari Quran.com.</span>`);
+            }
+        }
+
+        function updateTooltipsForVerse(verseKey, text) {
+            const [surah, ayat] = verseKey.split(':');
+            const rects = document.querySelectorAll(`.highlight-rect[data-verse="${verseKey}"]`);
+            rects.forEach(rect => {
+                const tooltip = rect.querySelector('.tooltip');
+                if (tooltip) {
+                    tooltip.innerHTML = `
+                        <div style="font-weight: 700; color: var(--accent-gold); font-size: 0.8rem; margin-bottom: 5px; border-bottom: 1px solid rgba(143, 111, 53, 0.1); padding-bottom: 4px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>QS. ${surah}:${ayat}</span>
+                            <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: normal; text-transform: uppercase;">Terjemahan</span>
+                        </div>
+                        <div style="font-size: 0.78rem; color: var(--text-primary); line-height: 1.45; font-weight: 400;">${text}</div>
+                    `;
+                }
+            });
+        }
+
+        // ---- Highlight Toggling ----
+
+        function highlightVerseRects(verseKey, highlight) {
+            const rects = document.querySelectorAll(`.highlight-rect[data-verse="${verseKey}"]`);
+            rects.forEach(rect => {
+                rect.classList.toggle('active', highlight);
+            });
+        }
+
+        function toggleVerseSelection(verseKey) {
+            if (selectedVerse === verseKey) {
+                selectedVerse = null;
+                const rects = document.querySelectorAll('.highlight-rect');
+                rects.forEach(rect => rect.classList.remove('active'));
+            } else {
+                selectedVerse = verseKey;
+                const rects = document.querySelectorAll('.highlight-rect');
+                rects.forEach(rect => {
+                    if (rect.dataset.verse === verseKey) {
+                        rect.classList.add('active');
+                    } else {
+                        rect.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        // ---- Page Info Panel ----
+
+        function updatePageInfo() {
+            const isSpread = window.innerWidth > 1024;
+            
+            let rightPageNo = currentPage % 2 !== 0 ? currentPage : currentPage - 1;
+            let leftPageNo = rightPageNo + 1 <= 604 ? rightPageNo + 1 : null;
+            
+            if (isSpread && leftPageNo) {
+                document.getElementById('infoPage').textContent = `${rightPageNo} - ${leftPageNo}`;
+                
+                let surahs = [];
+                let totalVerses = 0;
+                
+                if (rightPageData && rightPageData.data) {
+                    const s = rightPageData.data.data_surah || rightPageData.data.surah;
+                    if (s) surahs.push(s);
+                    totalVerses += rightPageData.data.verses ? rightPageData.data.verses.length : 0;
+                }
+                if (leftPageData && leftPageData.data) {
+                    const s = leftPageData.data.data_surah || leftPageData.data.surah;
+                    if (s && !surahs.includes(s)) surahs.push(s);
+                    totalVerses += leftPageData.data.verses ? leftPageData.data.verses.length : 0;
+                }
+                
+                document.getElementById('infoSurah').textContent = surahs.join(', ') || '-';
+                document.getElementById('infoVerses').textContent = totalVerses || '0';
+            } else {
+                const activeData = (currentPage % 2 !== 0) ? rightPageData : leftPageData;
+                if (activeData && activeData.data) {
+                    document.getElementById('infoPage').textContent = activeData.data.page || '-';
+                    document.getElementById('infoSurah').textContent = activeData.data.data_surah || activeData.data.surah || '-';
+                    document.getElementById('infoVerses').textContent = activeData.data.verses ? activeData.data.verses.length : 0;
+                }
+            }
+        }
+
+        // ---- Interactive Buttons & Keyboard ----
+
+        prevPageBtn.addEventListener('click', () => {
+            // Jump by 2 pages in spread mode (to open next physical page pair)
+            // or 1 page if we want fine control. Jumping by 2 is most natural for book spreads.
+            const jump = (window.innerWidth > 1024) ? 2 : 1;
+            const target = Math.max(1, currentPage - jump);
+            loadPage(target);
+        });
+
+        nextPageBtn.addEventListener('click', () => {
+            const jump = (window.innerWidth > 1024) ? 2 : 1;
+            const target = Math.min(604, currentPage + jump);
+            loadPage(target);
+        });
+
+        // Synchronize display text of page input (e.g. "21 - 22" or "21")
+        function syncPageInputDisplay() {
+            if (document.activeElement === pageNumberInput) return;
+
+            const isSpread = window.innerWidth > 1024;
+            if (isSpread) {
+                let rightPageNo = currentPage % 2 !== 0 ? currentPage : currentPage - 1;
+                let leftPageNo = rightPageNo + 1 <= 604 ? rightPageNo + 1 : null;
+                if (leftPageNo) {
+                    pageNumberInput.value = `${rightPageNo} - ${leftPageNo}`;
+                } else {
+                    pageNumberInput.value = `${rightPageNo}`;
+                }
+            } else {
+                pageNumberInput.value = currentPage;
+            }
+        }
+
+        // Window resize sync
+        window.addEventListener('resize', () => {
+            syncPageInputDisplay();
+            updatePageInfo();
+        });
+
+        // Focus event: show editable number
+        pageNumberInput.addEventListener('focus', () => {
+            pageNumberInput.value = currentPage;
+            pageNumberInput.select();
+        });
+
+        // Blur event: restore range display
+        pageNumberInput.addEventListener('blur', () => {
+            syncPageInputDisplay();
+        });
+
+        // Change event: load page and unfocus
+        pageNumberInput.addEventListener('change', () => {
+            let val = parseInt(pageNumberInput.value);
+            if (isNaN(val)) val = 1;
+            val = Math.max(1, Math.min(604, val));
+            loadPage(val);
+            pageNumberInput.blur();
+        });
+
+        // Toggle Highlights Switch
+        toggleHighlightsBtn.addEventListener('click', () => {
+            showHighlights = !showHighlights;
+            toggleHighlightsBtn.classList.toggle('active', showHighlights);
+            toggleHighlightsBtn.textContent = showHighlights ? 'Aktif' : 'Nonaktif';
+            leftHighlightOverlay.style.display = showHighlights ? 'block' : 'none';
+            rightHighlightOverlay.style.display = showHighlights ? 'block' : 'none';
+        });
+
+        // Key bindings
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                selectedVerse = null;
+                const rects = document.querySelectorAll('.highlight-rect');
+                rects.forEach(rect => rect.classList.remove('active'));
+            } else if (e.key === 'ArrowLeft') {
+                const jump = (window.innerWidth > 1024) ? 2 : 1;
+                loadPage(Math.min(604, currentPage + jump));
+            } else if (e.key === 'ArrowRight') {
+                const jump = (window.innerWidth > 1024) ? 2 : 1;
+                loadPage(Math.max(1, currentPage - jump));
+            }
+        });
+
+        // Setup manual input and load initial page
+        setupFileInputListeners();
+        window.addEventListener('DOMContentLoaded', () => {
+            if (location.protocol.startsWith('http')) {
+                loadPage(1);
+            }
+        });
+    </script>
+</body>
+</html>

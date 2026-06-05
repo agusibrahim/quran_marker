@@ -1,0 +1,19 @@
+# Python virtual environment and cache
+venv/
+__pycache__/
+*.pyc
+
+# System / IDE configuration files
+.DS_Store
+.vscode/
+.idea/
+
+# Quran Marker downloaded images and generated outputs
+pages/QK_*.webp
+pages/QK_*_highlighted.jpg
+pages/QK_*_highlights.json
+pages/crop_*.jpg
+pages/marker/
+
+# Logs
+*.log
