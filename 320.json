@@ -1,0 +1,237 @@
+{
+  "page": 320,
+  "image": "320.webp",
+  "image_width": 800,
+  "image_height": 1293,
+  "surah": 20,
+  "verses": [
+    {
+      "surah": 20,
+      "ayat": 114,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 74,
+          "width": 734,
+          "height": 68
+        },
+        {
+          "left": 256,
+          "top": 152,
+          "width": 516,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 20,
+      "ayat": 115,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 152,
+          "width": 178,
+          "height": 68
+        },
+        {
+          "left": 237,
+          "top": 231,
+          "width": 535,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 20,
+      "ayat": 116,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 231,
+          "width": 153,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 310,
+          "width": 734,
+          "height": 68
+        },
+        {
+          "left": 765,
+          "top": 387,
+          "width": 7,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 20,
+      "ayat": 117,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 387,
+          "width": 683,
+          "height": 68
+        },
+        {
+          "left": 529,
+          "top": 466,
+          "width": 243,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 20,
+      "ayat": 118,
+      "highlights": [
+        {
+          "left": 106,
+          "top": 466,
+          "width": 375,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 20,
+      "ayat": 119,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 466,
+          "width": 18,
+          "height": 68
+        },
+        {
+          "left": 334,
+          "top": 545,
+          "width": 438,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 20,
+      "ayat": 120,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 545,
+          "width": 248,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 626,
+          "width": 734,
+          "height": 68
+        },
+        {
+          "left": 672,
+          "top": 704,
+          "width": 100,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 20,
+      "ayat": 121,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 704,
+          "width": 588,
+          "height": 68
+        },
+        {
+          "left": 106,
+          "top": 782,
+          "width": 666,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 20,
+      "ayat": 122,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 782,
+          "width": 18,
+          "height": 68
+        },
+        {
+          "left": 331,
+          "top": 862,
+          "width": 441,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 20,
+      "ayat": 123,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 862,
+          "width": 247,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 940,
+          "width": 734,
+          "height": 68
+        },
+        {
+          "left": 290,
+          "top": 1018,
+          "width": 482,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 20,
+      "ayat": 124,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 1018,
+          "width": 206,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 1097,
+          "width": 734,
+          "height": 68
+        },
+        {
+          "left": 684,
+          "top": 1177,
+          "width": 88,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 20,
+      "ayat": 125,
+      "highlights": [
+        {
+          "left": 102,
+          "top": 1177,
+          "width": 536,
+          "height": 68
+        }
+      ]
+    }
+  ]
+}

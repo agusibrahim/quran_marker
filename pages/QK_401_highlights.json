@@ -1,0 +1,177 @@
+{
+  "page": 401,
+  "image": "QK_401.webp",
+  "image_width": 800,
+  "image_height": 1293,
+  "surah": 29,
+  "verses": [
+    {
+      "surah": 29,
+      "ayat": 39,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 69,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 149,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 745,
+          "top": 227,
+          "width": 7,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 29,
+      "ayat": 40,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 227,
+          "width": 659,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 307,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 387,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 266,
+          "top": 467,
+          "width": 486,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 29,
+      "ayat": 41,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 467,
+          "width": 186,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 546,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 625,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 461,
+          "top": 705,
+          "width": 291,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 29,
+      "ayat": 42,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 705,
+          "width": 373,
+          "height": 68
+        },
+        {
+          "left": 176,
+          "top": 785,
+          "width": 576,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 29,
+      "ayat": 43,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 785,
+          "width": 92,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 864,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 744,
+          "top": 943,
+          "width": 8,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 29,
+      "ayat": 44,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 943,
+          "width": 660,
+          "height": 68
+        },
+        {
+          "left": 504,
+          "top": 1023,
+          "width": 248,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 29,
+      "ayat": 45,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 1023,
+          "width": 420,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 1102,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 79,
+          "top": 1182,
+          "width": 673,
+          "height": 68
+        }
+      ]
+    }
+  ]
+}

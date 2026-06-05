@@ -1,0 +1,123 @@
+{
+  "page": 37,
+  "image": "QK_037.webp",
+  "image_width": 800,
+  "image_height": 1293,
+  "surah": 2,
+  "verses": [
+    {
+      "surah": 2,
+      "ayat": 231,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 74,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 151,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 231,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 308,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 84,
+          "top": 388,
+          "width": 668,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 2,
+      "ayat": 232,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 468,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 544,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 623,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 473,
+          "top": 704,
+          "width": 279,
+          "height": 68
+        }
+      ]
+    },
+    {
+      "surah": 2,
+      "ayat": 233,
+      "highlights": [
+        {
+          "left": 38,
+          "top": 704,
+          "width": 391,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 782,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 862,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 941,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 1018,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 38,
+          "top": 1098,
+          "width": 714,
+          "height": 68
+        },
+        {
+          "left": 85,
+          "top": 1175,
+          "width": 667,
+          "height": 68
+        }
+      ]
+    }
+  ]
+}
