@@ -1,5 +1,7 @@
 # Hybrid Computer Vision Framework for Quranic Verse Segmentation and Landmark Detection
 
+![Quran CV Banner](assets/quran_cv_banner.png)
+
 An automated, high-precision computer vision pipeline designed for segmenting Quranic text pages (specifically the Indonesian Ministry of Religious Affairs / **Kemenag** print style) into individual verses. By combining classical image processing, morphological analysis, dual-pass Hough transform circles detection, and rule-based semantic alignment, the framework achieves **100% verification accuracy across all 604 pages of the Quran**.
 
 ---
@@ -69,6 +71,8 @@ When strict circle detection yields fewer markers than the expected number of ve
 ---
 
 ## 2. Mathematical Formulations & Circle Scoring
+
+![Verse Marker Contour Analysis](assets/verse_marker_analysis.png)
 
 The quality of a circle candidate $(c_x, c_y, r)$ is scored via contour analysis:
 
